@@ -1,0 +1,25 @@
+<form #login="ngForm" (ngSubmit)="onSubmit(login.value)">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+      #email="ngModel" ngModel required email>
+    <div id="emailHelp" class="form-text" *ngIf="email.invalid && email.touched">
+      <div *ngIf="email.errors?.['required']">email is required</div>
+      <div *ngIf="email.errors?.['email']">please enter valid email</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" #password="ngModel" ngModel name="password"
+      required minlength="8">
+    <div class="form-text" *ngIf="password.invalid && password.touched">
+      <div *ngIf="password.errors?.['required']">Password is required</div>
+      <div *ngIf="password.errors?.['minlength']">
+        the actualLength is {{password.errors?.['minlength'].actualLength}}
+        but required length {{password.errors?.['minlength'].requiredLength}}
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="login.invalid">Submit</button>
+</form>
+<a routerLink="/forgotPassword">forgetPassword</a>

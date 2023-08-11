@@ -1,0 +1,52 @@
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+  <div class="mb-3">
+    <label for="Name" class="form-label">name</label>
+    <input type="text" class="form-control" id="Name" aria-describedby="textHelp" name="name" #name="ngModel" ngModel
+      minlength='3' required>
+    <div id="textHelp" class="form-text" *ngIf="name.invalid && name.touched">
+      <div *ngIf="name.errors?.['required']">name is required</div>
+      <div *ngIf="name.errors?.['minlength']">
+        the actualLength is {{name.errors?.['minlength'].actualLength}}
+        but required length {{name.errors?.['minlength'].requiredLength}}
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+      #email="ngModel" ngModel required email>
+    <div id="emailHelp" class="form-text" *ngIf="email.invalid && email.touched">
+      <div *ngIf="email.errors?.['required']">email is required</div>
+      <div *ngIf="email.errors?.['email']">please enter valid email</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">address</label>
+    <input type="text" class="form-control" id="address" aria-describedby="addressHelp" name="address"
+      #address="ngModel" ngModel required>
+    <div id="addressHelp" class="form-text" *ngIf="address.invalid && address.touched">
+      <div *ngIf="address.errors?.['required']">address is required</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="mobile" class="form-label">mobile</label>
+    <input type="text" class="form-control" id="mobile" aria-describedby="lsHelp" name="mobile" #mobile="ngModel"
+      ngModel required>
+    <div id="lsHelp" class="form-text" *ngIf="mobile.invalid && mobile.touched">
+      <div *ngIf="mobile.errors?.['required']">mobile is required</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" #password="ngModel" ngModel name="password"
+      required minlength="8">
+    <div class="form-text" *ngIf="password.invalid && password.touched">
+      <div *ngIf="password.errors?.['required']">Password is required</div>
+      <div *ngIf="password.errors?.['minlength']">
+        the actualLength is {{password.errors?.['minlength'].actualLength}}
+        but required length {{password.errors?.['minlength'].requiredLength}}
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+</form>
