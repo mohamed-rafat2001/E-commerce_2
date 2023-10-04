@@ -1,0 +1,68 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.parent {
+    background-color: gray;
+    position: relative;
+    height: 500px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.one,
+.two,
+.three {
+    position: absolute;
+    padding: 100px;
+    width: 10%;
+    text-align: center;
+    top: 30%;
+    /* left: 30%; */
+}
+
+.one {
+    background-color: red;
+
+
+    z-index: 5;
+}
+
+.two {
+    background-color: black;
+    color: green;
+
+}
+
+.three {
+    background-color: blue;
+
+}
+
+.one:hover+.two {
+
+    transition: 3s;
+    left: 40%;
+    -webkit-transition: 3s;
+    -moz-transition: 3s;
+    -ms-transition: 3s;
+    -o-transition: 3s;
+
+
+}
+
+.one:hover+.two+.three {
+
+    transition: 3s;
+    left: 25%;
+    -webkit-transition: 3s;
+    -moz-transition: 3s;
+    -ms-transition: 3s;
+    -o-transition: 3s;
+
+}
+
+.clear {
+    clear: both;
+}
